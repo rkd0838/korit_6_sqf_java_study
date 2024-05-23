@@ -17,4 +17,12 @@ public class Function03 {
         System.out.println(student.age);;
         System.out.println(student.phone);;
     }
+
+    void fx03(Game game) {
+        System.out.println("fx03 함수 호출");
+        System.out.println(game.name);
+        System.out.println(game.age);
+        System.out.println(game.type);
+        System.out.println(game.price);
+    }
 }

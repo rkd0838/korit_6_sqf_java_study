@@ -15,5 +15,13 @@ public class FunctionMain03 {
 
         fx.fx02(student);
 
+        Game game = new Game();
+        game.name = "LostArk";
+        game.age = 19;
+        game.type = "MMORPG";
+        game.price = "Free";
+
+        fx.fx03(game);
+
     }
 }

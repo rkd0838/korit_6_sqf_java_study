@@ -17,8 +17,18 @@ public class Function02 {
     }
     // class 안에 있을경우 메소드, 아닐경우 함수
 
+
+    //매개변수 o, 리턴 o
     String 빙수만들기(String 재료, int count) {
         return 재료 + " 빙수 " + count + "개 ";
 
     }
+
+    //매개변수 x, 리턴 o
+    String getData() {
+        return "데이터";
+
+
+    }
+
 }
