@@ -7,6 +7,8 @@ public class StudyMain {
         System.out.println(a.num);
         System.out.println(a.num2);
 
+        StudyB b = new StudyB();
+        b.show();
 
     }
 }
