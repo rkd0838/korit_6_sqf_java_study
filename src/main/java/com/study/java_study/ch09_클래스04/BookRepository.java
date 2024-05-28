@@ -7,11 +7,15 @@ import java.awt.print.Book;
 
 //저장소 -> CRUD
 public class BookRepository {
-
+    private int bookId;
     private BookEntity[] books;
 
     public BookRepository() {
         books = new BookEntity[0];
+    }
+
+    public int autoIncrementBookId() {
+        return ++bookId;
     }
 
     private void extendBooks() {
@@ -66,6 +70,7 @@ public class BookRepository {
             //contains -> 해당 문자열에 포함되어있는가
 
 
+            return i;
         }
         //다건조회
         public BookEntity[] searchBooks(int option, String searchText) {
