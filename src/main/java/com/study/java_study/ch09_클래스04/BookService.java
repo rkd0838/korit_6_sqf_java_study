@@ -9,34 +9,34 @@ public class BookService {
 
     public BookService() {
         scanner = new Scanner(System.in);
-        BookRepository BookRepository = new BookRepository();
+        bookRepository = new BookRepository();
     }
 
     private String selectMenu() {
         String menus = "1234q";
         String selectedMenu = null;
-        while (true) {
+
+        while(true) {
             System.out.print("메뉴 선택: ");
             selectedMenu = scanner.nextLine();
-            if (menus.contains(selectedMenu)) {
+            if(menus.contains(selectedMenu)){
                 break;
             }
             System.out.println("잘못된 입력입니다. 다시 입력하세요.");
         }
+
         return selectedMenu;
     }
-
 
     public boolean run() {
         boolean isRun = true;
 
-        System.out.println("[도서 관리 프로그램]");
+        System.out.println("[ 도서 관리 프로그램 ]");
         System.out.println("1. 도서 등록");
         System.out.println("2. 도서 검색");
         System.out.println("3. 도서 수정");
         System.out.println("4. 도서 삭제");
         System.out.println("q. 프로그램 종료");
-
 
         String selectedMenu = selectMenu();
 
@@ -62,70 +62,67 @@ public class BookService {
         return isRun;
     }
 
-    private String validataValue(String title) {
+    private String validateValue(String title) {
         String value = null;
-        while (true) {
-
-            System.out.print(title + "명 입력 : ");
+        while(true) {
+            System.out.print(title + "명 입력: ");
             value = scanner.nextLine();
-            if (!value.isBlank()) {
+            if(!value.isBlank()) { //공백인지 체크
                 break;
             }
-            System.out.println(title + "명은 공백일 수 없습니다. 다시 입력하세요.");
-
+            System.out.println(title + "명은 공배일 수 없습니다. 다시입력하세요.");
         }
         return value;
-
     }
 
     private String duplicateBookName() {
-        String booKname = null;
+        String bookName = null;
         while (true) {
-            booKname = validataValue("도서");
-            if (bookRepository.findBookByBookName(booKname) == null) {
+            bookName = validateValue("도서");
+            if(bookRepository.findBookByBookName(bookName) == null) {
                 break;
             }
             System.out.println("해당 도서명이 이미 존재합니다. 다시입력하세요.");
         }
-        return booKname;
+        return bookName;
     }
-
 
     private void registerBook() {
         System.out.println("[ 도서 등록 ]");
-        int bookId = bookRepository.autoIncrementBookId();
-        String bookName =duplicateBookName();
-        String author = validataValue("저자");
-        String publisher = validataValue("출판사");
 
-        BookEntity book= new BookEntity(bookId, bookName, author, publisher);
+        //도서 객체를 생성하기 위해 정보를 입력받는 역할
+        int bookId = bookRepository.autoIncrementBookId();
+        String bookName = duplicateBookName();
+        String author = validateValue("저자");
+        String publisher = validateValue("출판사");
+
+        //
+        BookEntity book = new BookEntity(bookId, bookName, author, publisher);
         bookRepository.saveBook(book);
         System.out.println("새로운 도서를 등록하였습니다.");
-
     }
+
     private void search() {
         System.out.println("[ 도서 검색 ]");
-        System.out.println("1. 통합검색");
-        System.out.println("2. 도서명검색");
-        System.out.println("3. 저자명검색");
-        System.out.println("4. 출판사명검색");
-        System.out.print("옵션선택 : ");
-        String option = scanner.nextLine();
+        System.out.println("1. 통합 검색");
+        System.out.println("2. 도서명 검색");
+        System.out.println("3. 저자명 검색");
+        System.out.println("4. 출판사명 검색");
+        System.out.print("옵션 선택: ");
+        int option = scanner.nextInt();
         scanner.nextLine();
         System.out.print("검색어 입력: ");
         String searchText = scanner.nextLine();
         BookEntity[] searchBooks = bookRepository.searchBooks(option, searchText);
 
         System.out.println("[ 검색 결과 ]");
-        if (searchBooks.length == 0) {
+        if(searchBooks.length == 0) {
             System.out.println("검색 결과가 없습니다.");
             return;
         }
-        for (BookEntity book : searchBooks) {
+        for(BookEntity book : searchBooks) {
             System.out.println(book.toString());
-            System.out.println();
         }
-
     }
 
 }
