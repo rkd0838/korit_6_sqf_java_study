@@ -1,4 +1,4 @@
-package com.study.java_study.ch10_추상화;
+package com.study.java_study.ch10_추상화01;
 
 public class Tiger extends Animal {
        private int power;
@@ -17,6 +17,11 @@ public class Tiger extends Animal {
     public void move() {
         System.out.println("호랑이가 네발로 뛰어갑니다.");
         super.move();
+    }
+
+    public void hunt() {
+        System.out.println("호랑이가 " + power + "의 힘으로 사냥을합니다.");
+
     }
 
     @Override
