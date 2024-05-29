@@ -158,4 +158,36 @@ public class BookRepository {
         return searchBooks;
     }
 
+    private int indexOfByBookId(int bookId) {
+        int findIndex = -1;
+
+        for(int i = 0; i < books.length; i++) {
+            if(books[i].getBookId() == bookId) {
+                findIndex = i;
+                break;
+
+            }
+        }
+
+        return findIndex;
+    }
+
+
+
+    public void deleteBookByBookId(int bookId) {
+        int findIndex = indexOfByBookId(bookId);
+        BookEntity[] newBooks = new BookEntity[books.length - 1];
+
+
+        for (int i = 0; i < newBooks.length; i++) {
+            if (i < findIndex) {
+                newBooks[i] = books[i];
+                continue;
+            }
+            newBooks[i] = books[i + 1];
+        }
+
+        books = newBooks;
+    }
+
 }
