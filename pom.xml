@@ -8,6 +8,18 @@
     <artifactId>JavaStudy</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies> <!-- 의존성 (라이브러리)를 의미함 -->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version>
+            <scope>provided</scope>
+
+        </dependency>
+    </dependencies>
+
+
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
