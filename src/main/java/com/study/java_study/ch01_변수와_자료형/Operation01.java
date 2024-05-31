@@ -14,7 +14,11 @@ public class Operation01 {
 
         System.out.println("//////////////////");
 
+        int a = 10;
+        int b = 2;
 
+        int num = (a / b);
+        System.out.println(num);
 
         //증감연산
         int i = 0;
