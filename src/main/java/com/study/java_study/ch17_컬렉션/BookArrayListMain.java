@@ -63,6 +63,19 @@ public class BookArrayListMain {
             }
         }
 
+        for (int i = 0; i < bookList.size(); i++) {
+            if (bookList.get(i).getBookName().equals(removeBookName)) {
+                Book removeBook = bookList.remove(i);
+                System.out.println("삭제된 도서 정보: " + removeBook);
+                break;
+            }
+        }
+
+        for (int i = 0; i < bookList.size(); i++) {
+            System.out.println("도서명: " + bookList.get(i).getBookName());
+            System.out.println("저자명: " + bookList.get(i).getAuthor());
+        }
+
 
     }
 }
